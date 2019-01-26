@@ -33,8 +33,10 @@ You can do it
 ### Electronic circuit
 #### Protoboard
 <p align="center">
-<img src="ESP-IR_MQTT/Fritzing/Fritzing_bb.png" alt="Protoboard"/>
+<img src="https://raw.githubusercontent.com/username/ESP-IR_MQTT/master/Fritzing/Fritzing_bb.png" alt="Protoboard"/>
 </p>
+
+
 
 #### Schematic
 <p align="center">
