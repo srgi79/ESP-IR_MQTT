@@ -13,7 +13,6 @@
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 IRsend irsend(kIrLed);
-//IRsend irsend2(kIrLed2);
 
 void setup() {
   Serial.begin(115200);
@@ -24,7 +23,6 @@ void setup() {
   pinMode(ledBuilt,OUTPUT);
   digitalWrite(ledBuilt,HIGH);
   irsend.begin();
-  //irsend2.begin();
     
   // init WiFi
   Serial.println();
