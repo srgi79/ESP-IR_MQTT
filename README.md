@@ -2,7 +2,7 @@
 
 #### Send IR commands via MQTT/Google Assistant
 
-You can do it
+You can use a general 5mm LED to test
 
 ### Hardware
 
