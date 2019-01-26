@@ -16,7 +16,6 @@ const char* MQTT_IN_TOPIC = "IR1/IN";
 
 // PIN: Definitions
 const short unsigned int kIrLed = 5;
-const short unsigned int kIrLed2 = 14;
 const short unsigned int ledBuilt = 2;
 const short unsigned int buttonPin = 4;
 const short unsigned int ledGreen =  12;
