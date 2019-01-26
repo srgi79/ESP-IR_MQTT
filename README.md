@@ -36,11 +36,9 @@ You can do it
 <img src="https://raw.githubusercontent.com/srgi79/ESP-IR_MQTT/master/Fritzing/Fritzing_bb.png" alt="Protoboard"/>
 </p>
 
-
-
 #### Schematic
 <p align="center">
-<img src="ESP-IR_MQTT/Fritzing/Fritzing_sch.png" alt="Schematic"/>
+<img src="https://raw.githubusercontent.com/srgi79/ESP-IR_MQTT/master/Fritzing/Fritzing_sch.png" alt="Schematic"/>
 </p>
 
 ### Arduino configuration
