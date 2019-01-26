@@ -31,8 +31,22 @@ You can do it
 
 
 ### Electronic circuit
+#### Protoboard
+<p align="center">
+<img src="ESP-IR_MQTT/Fritzing/Fritzing_bb.png" alt="Protoboard"/>
+</p>
+
+#### Schematic
+<p align="center">
+<img src="ESP-IR_MQTT/Fritzing/Fritzing_sch.png" alt="Schematic"/>
+</p>
 
 ### Arduino configuration
+
+* [BOARD] Witty/Adafruit HUZZAH ESP8266
+* [UPLOAD-SPEED] 115200
+* [FLASH-SIZE] 4M (1M SPIFFS)
+
 
 TEST
 
