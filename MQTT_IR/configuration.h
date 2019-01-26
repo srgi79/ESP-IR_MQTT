@@ -24,4 +24,4 @@ const short unsigned int ledBlue =  13;
 const short unsigned int ledRed =  15;
 
 // PIN: Analog Treshold
-unsigned int threshold = 0;
+unsigned int threshold = 512;
