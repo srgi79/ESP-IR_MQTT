@@ -6,7 +6,7 @@ const char* WIFI_PASSWORD = "XXXX";
 // MQTT: Config
 const PROGMEM char* MQTT_CLIENT_ID = "IR1";
 const PROGMEM char* MQTT_SERVER_IP = "192.168.0.100";
-const PROGMEM uint16_t MQTT_SERVER_PORT = 1883;
+const PROGMEM short unsigned int MQTT_SERVER_PORT = 1883;
 const PROGMEM char* MQTT_USER = "XXXX";
 const PROGMEM char* MQTT_PASSWORD = "XXXX";
 
