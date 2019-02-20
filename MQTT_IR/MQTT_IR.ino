@@ -91,9 +91,12 @@ void callback(char* p_topic, byte* p_payload, unsigned int p_length) {
   else if (payload == "DAY") { irsend.sendNEC(0x44BB28D7, 32);}
   
   else if (payload == "SPOWER") { irsend2.sendSAMSUNG(0xE0E040BF, 32);}
-  else if (payload == "SSOURCE") { irsend2.sendGC(sourceRaw, 135);}
-  else if (payload == "SVOLUP") { irsend2.sendGC(volUpRaw, 135);}
-  else if (payload == "SVOLDWN") { irsend2.sendGC(volDwnRaw, 135);}
+  else if (payload == "SSOURCE2") { irsend2.sendGC(sourceRaw, 135);}
+  else if (payload == "SSOURCE") { irsend2.sendSAMSUNG(0xE0E0807F, 32);}
+  else if (payload == "SVOLUP2") { irsend2.sendGC(volUpRaw, 135);}
+  else if (payload == "SVOLUP") { irsend2.sendSAMSUNG(0xE0E0E01F, 32);}
+  else if (payload == "SVOLDWN2") { irsend2.sendGC(volDwnRaw, 135);}
+  else if (payload == "SVOLDWN") { irsend2.sendSAMSUNG(0xE0E0D02F, 32);}
   
   else if (payload == "RED") { digitalWrite(ledRed,flag);}
   else if (payload == "GREEN") { digitalWrite(ledGreen,flag);}
