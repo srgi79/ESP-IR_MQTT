@@ -13,6 +13,7 @@
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 IRsend irsend(kIrLed);
+IRsend irsend2(kIrLed2);
 
 void setup() {
   Serial.begin(115200);
@@ -23,6 +24,7 @@ void setup() {
   pinMode(ledBuilt,OUTPUT);
   digitalWrite(ledBuilt,HIGH);
   irsend.begin();
+  irsend2.begin();
     
   // init WiFi
   Serial.println();
@@ -34,8 +36,7 @@ void setup() {
   
   while (WiFi.status() != WL_CONNECTED) {
    delay(500);
-   Serial.print(".");
-  }
+   Serial.print("."); }
   
   Serial.println("");
   Serial.println("WiFi OK");
@@ -48,9 +49,7 @@ void setup() {
 }
 
 void loop() {
-  if (!client.connected()) {
-   reconnect();
-  }
+  if (!client.connected()) { reconnect(); }
   client.loop();
 }
 
@@ -60,23 +59,22 @@ void reconnect() {
    Serial.print("Intentant MQTT...");
    if (client.connect(MQTT_CLIENT_ID, MQTT_USER, MQTT_PASSWORD)) {
      Serial.println("OK");
-     client.subscribe(MQTT_IN_TOPIC);
-   } else {
+     client.subscribe(MQTT_IN_TOPIC); } 
+   else {
      Serial.print("ERROR = ");
      Serial.print(client.state());
      Serial.println("Reintentant en 5s");
-     delay(5000);
-   }
+     delay(5000); }
   }
 }
 
 void callback(char* p_topic, byte* p_payload, unsigned int p_length) {
+  flag = not flag;
  // Byte to String
  String payload;
  int LDR = 0;
  for (uint8_t i = 0; i < p_length; i++) {
-   payload.concat((char)p_payload[i]);
- }
+   payload.concat((char)p_payload[i]); }
   Serial.print("Rebut: "); Serial.println(payload);
   if (payload == "LDR") { 
     LDR = analogRead(A0);
@@ -88,12 +86,20 @@ void callback(char* p_topic, byte* p_payload, unsigned int p_length) {
   else if (payload == "ON") { 
     LDR = analogRead(A0);
     if (LDR < threshold) { irsend.sendNEC(0x44BBC03F, 32); } }
+    
   else if (payload == "NIGHT") { irsend.sendNEC(0x44BB30CF, 32);}
   else if (payload == "DAY") { irsend.sendNEC(0x44BB28D7, 32);}
-  else if (payload == "SPOWER") { irsend.sendGC(powerRaw, 135);}
-  else if (payload == "SSOURCE") { irsend.sendGC(sourceRaw, 135);}
-  else if (payload == "SVOLUP") { irsend.sendGC(volUpRaw, 135);}
-  else if (payload == "SVOLDWN") { irsend.sendGC(volDwnRaw, 135);}
+  
+  else if (payload == "SPOWER") { irsend2.sendSAMSUNG(0xE0E040BF, 32);}
+  else if (payload == "SSOURCE") { irsend2.sendGC(sourceRaw, 135);}
+  else if (payload == "SVOLUP") { irsend2.sendGC(volUpRaw, 135);}
+  else if (payload == "SVOLDWN") { irsend2.sendGC(volDwnRaw, 135);}
+  
+  else if (payload == "RED") { digitalWrite(ledRed,flag);}
+  else if (payload == "GREEN") { digitalWrite(ledGreen,flag);}
+  else if (payload == "BLUE") { digitalWrite(ledBlue,flag);}
+  else if (payload == "BUILT") { digitalWrite(ledBuilt,flag);}
+  
   else if (payload.toInt() <=1024 and payload.toInt() >=0) { 
     threshold = payload.toInt();
     Serial.print("Threshold canviat a "); Serial.println(threshold);}
